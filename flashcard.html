@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Study Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .flashcard {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .flashcard button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .flashcard button:hover {
+            background-color: #0056b3;
+        }
+        .flashcard .definition {
+            display: none;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vocabulary Flashcards</h1>
+    <div id="flashcard" class="flashcard">
+        <h2 id="term"></h2>
+        <p id="definition" class="definition"></p>
+        <button onclick="showDefinition()">Show Definition</button>
+        <button onclick="nextCard()">Next Card</button>
+    </div>
+
+    <script>
+        const flashcards = [
+            { term: "Ambiguity", definition: "The quality of being open to multiple interpretations." },
+            { term: "Ambiguous", definition: "Open to more than one interpretation." },
+            { term: "Ambivalent", definition: "Having mixed feelings or contradictory ideas about something or someone." },
+            { term: "Ambivalence", definition: "Simultaneous and contradictory attitudes or feelings toward an object, person, or action." },
+            { term: "Ambitious", definition: "Having a strong desire for success or achievement." },
+            { term: "Ambition", definition: "The desire for success or achievement." },
+            { term: "Ambience", definition: "The character and atmosphere of a place." },
+            { term: "Fortitude", definition: "Courage in pain or adversity." },
+            { term: "Fortify", definition: "To strengthen or secure something; to give physical strength, courage, or endurance to something." },
+            { term: "Fortification", definition: "A defensive wall or other reinforcement built to strengthen a place against attack." },
+            { term: "Fortress", definition: "A military stronghold, especially a strongly fortified town." },
+            { term: "Comfort", definition: "A state of physical ease and freedom from pain or constraint. To provide ease or freedom from pain or constraint." },
+            { term: "Effort", definition: "A vigorous or determined attempt." },
+            { term: "Reinforcement", definition: "The action or process of strengthening." },
+            { term: "Reinforce", definition: "To strengthen by additional assistance, material, or support." },
+            { term: "Iterate", definition: "To perform repeatedly." },
+            { term: "Iteration", definition: "The repetition of a process or utterance." },
+            { term: "Iterative", definition: "Relating to or involving iteration, especially of a mathematical or computational process." },
+            { term: "Reiteration", definition: "The action of repeating something, typically for emphasis or clarity." },
+            { term: "Attempt", definition: "An act of trying to achieve or accomplish something, typically one that is unsuccessful or not certain to succeed. To make an effort to accomplish or achieve something." },
+            { term: "Intention", definition: "A thing intended; an aim or plan." },
+            { term: "Tentative", definition: "Not certain or fixed; provisional." },
+            { term: "Contention", definition: "Rivalry, competition, debate, argument, or disagreement. (Contentious would be argumentative or disagreeable, but a contention could just be your claim in a debate.)" },
+            { term: "Contend", definition: "To engage in a rivalry, competition, debate, or disagreement." },
+            { term: "Detention", definition: "The action of detaining someone or the state of being detained in official custody." },
+            { term: "Verbatim", definition: "In exactly the same words as were used originally." },
+            { term: "Proverb", definition: "A short, well-known pithy saying, stating a general truth or piece of advice." },
+            { term: "Verbiage", definition: "Speech or writing that uses too many words or excessively technical expressions." },
+            { term: "Verve", definition: "Vigor and spirit or enthusiasm." },
+            { term: "Adverb", definition: "A word or phrase that modifies or qualifies an adjective, verb, or other adverb or a word group." },
+            { term: "Verbose", definition: "Using or expressed in more words than are needed." },
+            { term: "Verbalize", definition: "Express (ideas or feelings) in words, especially by speaking out loud." },
+            { term: "Verbal", definition: "Relating to or in the form of words." }
+        ];
+
+        let currentCard = 0;
+
+        function showDefinition() {
+            const definitionElement = document.getElementById('definition');
+            definitionElement.style.display = 'block';
+        }
+
+        function nextCard() {
+            currentCard = (currentCard + 1) % flashcards.length;
+            updateCard();
+        }
+
+        function updateCard() {
+            const termElement = document.getElementById('term');
+            const definitionElement = document.getElementById('definition');
+            termElement.textContent = flashcards[currentCard].term;
+            definitionElement.textContent = flashcards[currentCard].definition;
+            definitionElement.style.display = 'none';
+        }
+
+        updateCard();
+    </script>
+</body>
+</html>
